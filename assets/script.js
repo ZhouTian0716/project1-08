@@ -2,6 +2,7 @@
 const newCard = $("#newCards");
 const nextNews = $("#topNews");
 const toDaysDate = $("#date");
+const toDayWeather = $("#weather")
 var currentDay = moment().format("DD/MM/YY")
 
 // date 
@@ -39,11 +40,11 @@ function getlocalWeather(lat,lon) {
     $("#currentWeatherlocation").text()
   });
 };
-
+// Displays Weather on main page 
 function displayLocalWeather(data){
   let icon = data.weather[0].icon
   
-  var skyWeather = "http://openweathermap.org/img/wn/"+ icon +"@2x.png"
+  var skyWeather = "https://openweathermap.org/img/wn/"+ icon +"@2x.png"
   
   var currentTemp = document.createElement('h4');
   var date = document.createElement('h4');
@@ -52,10 +53,12 @@ function displayLocalWeather(data){
   var weatherIcon = document.createElement('img')
 
   weatherIcon.src = skyWeather
-  currentTemp.textContent("Current Tempreture:" + data.main.temp + "°C")
-  currentHumid.textContent("Current Humidity:"+data.main.humidity+"%")
-  windSpeed.textContent("Current Windspeed:"+data.wind.speed+"km/h")
+  currentTemp.textContent = ("Current Tempreture:" + data.main.temp + "°C")
+  currentHumid.textContent = ("Current Humidity:"+data.main.humidity+"%")
+  windSpeed.textContent = ("Current Windspeed:"+data.wind.speed+"km/h")
   date.textContent = ("(" +currentDay + ")")
+
+
 
 }
   
